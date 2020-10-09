@@ -16,7 +16,7 @@ jobs:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
         access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
     - name: Update Col1
-      uses: paulholden2/smartsheet-update-row@master
+      uses: paulholden2/smartsheet-update-row@v2
       with:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
         access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
@@ -24,7 +24,7 @@ jobs:
         column-name: Col1
         cell-value: Col1 Value
     - name: Update Col2
-      uses: paulholden2/smartsheet-update-row@master
+      uses: paulholden2/smartsheet-update-row@v2
       with:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
         access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
