@@ -1,0 +1,32 @@
+name: New row
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  new-row:
+    name: New row
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add row
+      uses: paulholden2/smartsheet-add-row@v1
+      with:
+        sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
+        access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
+    - name: Update Col1
+      uses: paulholden2/smartsheet-update-row@v1
+      with:
+        sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
+        access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
+        row-id: ${{ steps.new-row.outputs.row-id }}
+        column-name: Col1
+        cell-value: Col1 Value
+    - name: Update Col2
+      uses: paulholden2/smartsheet-update-row@v1
+      with:
+        sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
+        access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
+        row-id: ${{ steps.new-row.outputs.row-id }}
+        column-name: Col2
+        cell-value: '10/01/2020'
