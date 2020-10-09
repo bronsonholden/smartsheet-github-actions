@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Add row
+      id: add-row
       uses: paulholden2/smartsheet-add-row@v1
       with:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
@@ -19,7 +20,7 @@ jobs:
       with:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
         access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
-        row-id: ${{ steps.new-row.outputs.row-id }}
+        row-id: ${{ steps.add-row.outputs.row-id }}
         column-name: Col1
         cell-value: Col1 Value
     - name: Update Col2
@@ -27,6 +28,6 @@ jobs:
       with:
         sheet-id: ${{ secrets.SMARTSHEET_SHEET_ID }}
         access-token: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
-        row-id: ${{ steps.new-row.outputs.row-id }}
+        row-id: ${{ steps.add-row.outputs.row-id }}
         column-name: Col2
         cell-value: '10/01/2020'
